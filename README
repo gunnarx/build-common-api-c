@@ -1,0 +1,8 @@
+Testing build of common-api with systemd build also from source.
+
+I got some strange errors depending on which systemd version was used
+to link against, so I decided to write a script to test what's 
+going on and in particular to build on a clean machine where no
+systemd is installed to interfere - only the version built from
+source should be used.
+
