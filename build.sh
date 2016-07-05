@@ -29,7 +29,7 @@ make -j8
 mkdir -p ../capic-poc/systemd
 cp -r .libs ../capic-poc/systemd/libs
 mkdir -p ../capic-poc/systemd/headers
-cp src/systemd/*.h ../capic-poc/systemd/headers
+cp -r src/systemd ../capic-poc/systemd/headers/
 
 cd ../capic-poc
 autoreconf -i
