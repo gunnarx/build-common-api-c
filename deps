@@ -1,7 +1,7 @@
-apt-get install -y git build-essential intltool gtk-doc-tools gperf libcap-dev
+sudo apt-get install -y git build-essential intltool gtk-doc-tools gperf libcap-dev
 
 #? Not in build-dep systemd but seems to work:
-apt-get install -y libgcrypt20-dev
+sudo apt-get install -y libgcrypt20-dev
 
 # weirdly systemd complains about libmount but
 # libblkid seems needed as well:
