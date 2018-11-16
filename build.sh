@@ -1,4 +1,7 @@
-#!/bin/bash -xe
+#!/bin/bash
+
+set -x
+set -e
 
 DEFAULT_VERSION=v226
 
@@ -17,17 +20,15 @@ cd systemd
 # Clean all just in case
 git reset --hard && git clean -fdx
 git checkout $version
-./autogen.sh
-./configure CFLAGS='-g -O0 -ftrapv' --sysconfdir=/etc --localstatedir=/var --libdir=/usr/lib --with-rootprefix=/ --with-rootlibdir=/lib
-make -j8
+meson build/ && ninja -C build
 
 # BUILDING COMMON-API C
 #---------------------------------------------------
 
 # The following 3 moves of content are done because it's similar
 # to the setup in Go pipelines.
-mkdir -p ../capic-poc/systemd
-cp -r .libs ../capic-poc/systemd/libs
+mkdir -p ../capic-poc/systemd/libs
+cp build/*.so* ../capic-poc/systemd/libs/
 mkdir -p ../capic-poc/systemd/headers
 cp -r src/systemd ../capic-poc/systemd/headers/
 
